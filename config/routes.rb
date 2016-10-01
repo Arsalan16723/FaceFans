@@ -1,6 +1,20 @@
 Rails.application.routes.draw do
+  get 'comments/index'
+
+  get 'comments/new'
+
+  get 'comments/create'
+
+  get 'comments/edit'
+
+  get 'comments/update'
+
+  get 'comments/destroy'
+
   devise_for :users, :controllers => { registrations: 'registrations' }
-  resources :posts
+  resources :posts do
+    resources :comments
+  end
   root 'posts#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
